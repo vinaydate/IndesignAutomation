@@ -1,0 +1,34 @@
+<!doctype html>
+
+<html ng-app="PanchaangaIndApp">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/semantic.min.css"/>
+    <link id="ppstyle" rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="../js/lib/jQuery.min.js"></script>
+    <script src="../js/lib/jquery.address.js"></script>
+    <script src="../js/lib/semantic.min.js"></script>
+    <script src="../js/lib/angular/angular.js"></script>
+    <script src="../js/lib/angular/angular-route.js"></script>
+    <script src="../js/lib/angular/angular-resource.js"></script>
+    <title>Panchaanga</title>
+</head>
+
+<body>
+
+<div ng-controller="Data">
+    <div class="ui teal button marathi" ng-click="processKoshha()">कोष</div>
+    <div class="ui teal button marathi">स्थान</div>
+    <div class="ui teal button marathi">पत्रिका</div>
+
+    <div class="ui orange segment">{{values}}</div>
+</div>
+
+
+<script src="../js/themeManager.js"></script>
+<script src="ItaraControllers.js"></script>
+<script src="../js/forSemanticUI.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+
+<html ng-app="App">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/semantic.css"/>
+    <link id="ppstyle" rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="./js/lib/jQuery.min.js"></script>
+    <script src="./js/lib/semantic.js"></script>
+    <script src="./js/lib/jquery.address.js"></script>
+    <script src="./js/lib/angular/angular.js"></script>
+    <script src="./js/lib/angular/angular-route.js"></script>
+    <script src="./js/lib/angular/angular-resource.js"></script>
+    <title>Panchaanga</title>
+</head>
+
+<body onLoad="onLoaded()">
+
+<div ng-controller="MainController" class="ui grid">
+    <div class="ui menu">
+        <div class="ui teal simple dropdown button">
+            <div class="text marathi">{{ selectedSection.title }}</div>
+            <i class="dropdown icon"></i>
+
+            <div class="menu">
+                <a class="ui marathi item" href="#/{{ section.title }}" ng-repeat="section in sections" ng-click="select(section)">
+                    {{ section.title }}
+                </a>
+            </div>
+        </div>
+        <div class="item ui simple dropdown" ng-class="{active:(sthaanaText.length && !placeSelected)}">
+            <!--<dp-typeahead items="sthaanas" prompt="Select Place..." title="Name" model="selectedSthaana"/>--><!--subtitle="abbreviation" on-select="onItemSelected()" -->
+            <!--<div class="ui selection dropdown" ng-model="selectedSthaana" ng-options="sthaana.Name for sthaana in sthaanas"></select>-->
+
+            <div class="ui input">
+                <input type="text" style="height: 2em" ng-model="sthaanaText" placeholder="Select place..." ng-keydown="placeSelected=false"/>
+            </div>
+
+            <div class="ui menu" style="overflow-y:auto; height: 20em">
+                <div class="item text" ng-repeat="sthaana in sthaanas | filter:{Name:sthaanaText} track by $index"
+                     ng-click="handlePlaceSelection(sthaana)" style="cursor:pointer" ng-class="{active:isCurrent($index)}"
+                     ng-mouseenter="setCurrent($index)">
+                    <p>{{sthaana['Name']}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui teal simple dropdown button">
+            <div class="text">{{ selectedBhaashhaa }}</div>
+            <i class="dropdown icon"></i>
+
+            <div class="menu transition hidden">
+                <a class="ui item" ng-repeat="bhaashhaa in bhaashhaas" ng-click="selectBhaashhaa(bhaashhaa)">
+                    {{ bhaashhaa }}
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!--<div class="ui teal button marathi">{{ selectedSthaana.Name }}</div>
+    <div class="ui teal simple dropdown icon button">
+        <i class="dropdown icon"></i>
+
+        <div class="menu transition hidden">
+            <a class="ui marathi item" ng-repeat="sthaana in sthaanas" ng-click="selectSthaana(sthaana)">
+                {{ sthaana.Name }}
+            </a>
+        </div>
+    </div>-->
+
+
+</div>
+
+<div ng-view class="ui orange segment"></div>
+<ul class="debugtools">
+    <li>
+        <button id="btn_debug">Dt</button>
+    </li>
+    <li>
+        <button id="btn_reload">Rf</button>
+    </li>
+</ul>
+
+<script src="./js/themeManager.js"></script>
+<script src="./js/lib/linq.js"></script>
+<script src="./js/lib/ext.js"></script>
+<script src="./js/lib/CSInterface-4.0.0.js"></script>
+<script src="./js/app.js"></script>
+<script src="Features/UI/TypeAhead.js"></script>
+<script src="Features/Service/Error.js"></script>
+<script src="Features/Service/DataService.js"></script>
+<script src="./js/controllers.js"></script>
+<script src="./js/forSemanticUI.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<div class="ui pointing secondary menu">
+    <a class="active item" data-tab="Ephemeris">
+        Ephemeris
+    </a>
+    <a class="item marathi" data-tab="KundaliSaadhana">
+        कुंडली साधन
+    </a>
+</div>
+<div class="ui active tab segment" data-tab="Ephemeris">
+    <div class="ui grid">
+        <div class="row">
+            <div class="ui labeled input">
+                <div class="ui label">From Year</div>
+                <input type="text" ng-model="fromYear" placeholder="From Year"/>
+            </div>
+            <div class="ui labeled input">
+                <div class="ui label">To Year</div>
+                <input type="text" ng-model="toYear" placeholder="To Year"/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui tab segment" data-tab="KundaliSaadhana">
+    KundaliSaadhana
+</div>
+<div class="ui tab segment" data-tab="third">
+    Third
+</div>
+
+<script>
+    $('.ui.secondary.menu .item').tab({ history: false });
+</script>

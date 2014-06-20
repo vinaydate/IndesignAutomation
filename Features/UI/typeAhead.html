@@ -1,0 +1,13 @@
+<div class="text">
+    <div class="ui input">
+        <input type="text" ng-model="model" placeholder="{{prompt}}" ng-keydown="selected=false"/>
+    </div>
+</div>
+<div class="menu" ng-hide="!model.length || selected">
+    <div class="ui teal inverted item" ng-repeat="item in items | filter:{Name:model} track by $index"
+         ng-click="handleSelection(item[title])" style="cursor:pointer" ng-class="{active:isCurrent($index)}"
+         ng-mouseenter="setCurrent($index)">
+        <p class="title">{{item[title]}}</p>
+        <p class="subtitle" ng-hide="!subtitle">{{item[subtitle]}}</p>
+    </div>
+</div>
