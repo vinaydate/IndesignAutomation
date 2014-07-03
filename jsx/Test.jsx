@@ -1,6 +1,3 @@
-/*jslint browser: true*/
-/*global alert, app */
-
 function placeData(data) {
     'use strict';
     alert(data);

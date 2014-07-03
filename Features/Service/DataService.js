@@ -4,7 +4,7 @@
 /*jslint browser: true*/
 /*global $, Enumerable, angular, PanchaangaIndApp, console */
 
-angular.module('App').service('DataService', ['$resource', 'ErrorService', '$log', '$q', function ($resource, ErrorService, $log, $q) {
+angular.module('App').service('DataService', ['$resource', 'ErrorService', '$log', '$q', '$rootScope', function ($resource, ErrorService, $log, $q, $rootScope) {
     'use strict';
 
     var localStorage = "Local Storage";
@@ -102,7 +102,7 @@ angular.module('App').service('DataService', ['$resource', 'ErrorService', '$log
     };
 
     //TODO make arrangement for url input from user and use it
-    dataService.RootUrl = "http://localhost:16572"; // "http://datepanchang.azurewebsites.net";
+    //dataService.RootUrl = "http://localhost:16572"; // "http://datepanchang.azurewebsites.net";
 
     dataService.RestoreFromWeb = function (overwrite) {
         createTable(dataService.DB, "Sthaana",
@@ -110,12 +110,12 @@ angular.module('App').service('DataService', ['$resource', 'ErrorService', '$log
                 { fieldName: "Name", unique: false},
                 {fieldName: "PartitionKey", unique: false},
                 {fieldName: "RowKey", unique: false}
-            ], dataService.RootUrl + '/seva/sthaana', overwrite);
+            ], $rootScope.DataUrl + '/seva/sthaana', overwrite);
         createTable(dataService.DB, "Koshha",
             [
                 {fieldName: "PartitionKey", unique: false},
                 {fieldName: "RowKey", unique: false}
-            ], dataService.RootUrl + '/seva/bhaashhaa?name=*', overwrite);
+            ], $rootScope.DataUrl + '/seva/bhaashhaa?name=*', overwrite);
     };
 
     dataService.SyncWithWeb = function () {

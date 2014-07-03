@@ -22,6 +22,7 @@ $._ext = {
     // Evaluate all the files in the given folder 
     evalFiles: function(jsxFolderPath) {
         'use strict';
+        //alert("Loading script files");
         var i, jsxFiles, folder, jsxFile;
         folder = new Folder(jsxFolderPath);
         if (folder.exists) {
@@ -31,7 +32,10 @@ $._ext = {
             for (i = 0; i < jsxFiles.length; i++) {
                 jsxFile = jsxFiles[i];
                 //noinspection JSLint
-                $._ext.evalFile(jsxFile);
+                if(!jsxFile.contains("IndesignAutomation.jsx"))
+                    $._ext.evalFile(jsxFile);
+                $.writeln(jsxFile);
+                //alert(jsxFile);
             }
         }
     }

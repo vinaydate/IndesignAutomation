@@ -16,7 +16,7 @@ var PanchaangaIndApp = angular.module('App', [
     $routeProvider.when('/इतर', {templateUrl: 'partials/Itara.html', controller: 'Itara'});
     $routeProvider.when('/व्यवस्था', {templateUrl: 'partials/Vyavasthaa.html', controller: 'Settings'});
     $routeProvider.otherwise({redirectTo: '/वार्षिक'});
-}]).run(function ($rootScope, $q) {
+}]).run(function ($rootScope) {
     'use strict';
     $rootScope.Indesign = new CSInterface();
 
@@ -32,6 +32,7 @@ var PanchaangaIndApp = angular.module('App', [
 
     function loadJSX() {
         var extensionRoot = $rootScope.Indesign.getSystemPath(SystemPath.EXTENSION) + "/jsx/";
+        //alert(extensionRoot);
         //$rootScope.Indesign.evalScript('alert("Shardul")');
         $rootScope.Indesign.evalScript('$._ext.evalFiles("' + extensionRoot + '")');
     }
@@ -44,6 +45,8 @@ var PanchaangaIndApp = angular.module('App', [
 
         $("#btn_debug").click(showDevTools);
         $("#btn_reload").click(reloadPanel);
+
+        $rootScope.DataUrl = "http://localhost:16572"; // "http://datepanchang.azurewebsites.net";
     }
 
     init();

@@ -1,4 +1,4 @@
-<div class="ui pointing secondary menu">
+<div class="ui top attached purple tabular menu">
     <a class="active item" data-tab="Ephemeris">
         Ephemeris
     </a>
@@ -6,27 +6,45 @@
         कुंडली साधन
     </a>
 </div>
-<div class="ui active tab segment" data-tab="Ephemeris">
-    <div class="ui grid">
-        <div class="row">
-            <div class="ui labeled input">
-                <div class="ui label">From Year</div>
-                <input type="text" ng-model="fromYear" placeholder="From Year"/>
+<div class="ui bottom attached active tab purple segment" data-tab="Ephemeris">
+    <div class="ui form">
+        <div class="four fields">
+            <div class="field">
+                <div class="ui input">
+                    <label>From Year</label>
+                    <!--<div class="ui pointing below purple label">
+                        From Year
+                    </div>-->
+                    <input type="text" ng-model="fromYear" placeholder="From Year"/>
+                </div>
             </div>
-            <div class="ui labeled input">
-                <div class="ui label">To Year</div>
-                <input type="text" ng-model="toYear" placeholder="To Year"/>
+            <div class="field">
+                <div class="ui input">
+                    <label>To Year</label>
+                    <!--<div class="ui pointing below purple label">To Year</div>-->
+                    <input type="text" ng-model="toYear" placeholder="To Year"/>
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui blue button" ng-click="prepare()" ng-class="{loading:processing}">
+                    Prepare
+                </div>
+            </div>
+            <div class="field" ng-hide="!processing">
+                <div class="ui red button" ng-click="abort()">
+                    Cancel
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div class="ui tab segment" data-tab="KundaliSaadhana">
+<div class="ui bottom attached purple tab segment" data-tab="KundaliSaadhana">
     KundaliSaadhana
 </div>
-<div class="ui tab segment" data-tab="third">
+<div class="ui bottom attached purple tab segment" data-tab="third">
     Third
 </div>
 
 <script>
-    $('.ui.secondary.menu .item').tab({ history: false });
+    $('.ui.tabular.menu .item').tab({ history: false });
 </script>
