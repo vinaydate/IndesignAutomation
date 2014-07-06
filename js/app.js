@@ -13,12 +13,14 @@ var PanchaangaIndApp = angular.module('App', [
     $routeProvider.when('/दिनविशेष', {templateUrl: 'partials/DinaVisheshha.html', controller: 'DinaVisheshha'});
     $routeProvider.when('/पंचवर्षीय', {templateUrl: 'partials/PanchaVarshheeya.html', controller: 'PanchaVarshheeya'});
     $routeProvider.when('/दिनदर्शिका', {templateUrl: 'partials/Calendar.html', controller: 'Calendar'});
-    $routeProvider.when('/इतर', {templateUrl: 'partials/Itara.html', controller: 'Itara'});
+    $routeProvider.when('/इतर', {templateUrl: 'Features/Itara/ItaraView.html', controller: 'Itara'});
     $routeProvider.when('/व्यवस्था', {templateUrl: 'partials/Vyavasthaa.html', controller: 'Settings'});
     $routeProvider.otherwise({redirectTo: '/वार्षिक'});
 }]).run(function ($rootScope) {
     'use strict';
     $rootScope.Indesign = new CSInterface();
+
+    $rootScope.AlertModal = "AlertModal";
 
     function showDevTools() {
         //noinspection JSLint

@@ -32,9 +32,9 @@ $._ext = {
             for (i = 0; i < jsxFiles.length; i++) {
                 jsxFile = jsxFiles[i];
                 //noinspection JSLint
-                if(!jsxFile.contains("IndesignAutomation.jsx"))
+                if(jsxFile.displayName !== "IndesignAutomation.jsx") {
                     $._ext.evalFile(jsxFile);
-                $.writeln(jsxFile);
+                }
                 //alert(jsxFile);
             }
         }

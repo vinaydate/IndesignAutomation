@@ -6,7 +6,7 @@
 Ephemeris = {
     prepare: function (data) {
         'use strict';
-        alert(data.FromVarsha + ' - ' + data.ToVarsha);
+        Utils.GetPage(app.documents[0], 'Graha 01', true, false, 'A-Master');
         //app.documents[0].pages[0].textFrames[0].contents = data;
     }
 };

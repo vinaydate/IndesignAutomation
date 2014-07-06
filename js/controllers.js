@@ -1,10 +1,23 @@
 /*jslint browser: true*/
-/*global $, PanchaangaIndApp, Enumerable, alert */
+/*global $, PanchaangaIndApp, Enumerable, alert, CopyObject, angular */
 /* Controllers */
 
 PanchaangaIndApp
-    .controller('MainController', ['$scope', 'DataService', 'ErrorService', '$timeout', function ($scope, DataService, $timeout, ErrorService) {
+    .controller('MainController', ['$scope', 'DataService', 'ErrorService', '$timeout', '$rootScope', function ($scope, DataService, ErrorService, $timeout, $rootScope) {
         'use strict';
+        $scope.modal = {
+            Header : "",
+            Text : "",
+            withCancel : false
+        };
+
+        $scope.$on($rootScope.AlertModal, function(event, settings){
+            CopyObject($scope.modal,settings);
+            $('.ui.modal')
+                .modal('show')
+            ;
+        });
+
         $scope.sections = [
             {
                 'title': 'वार्षिक'
@@ -75,32 +88,7 @@ PanchaangaIndApp
     .controller('DinaVisheshha', ['$scope', '$resource', function ($scope, $resource) {
         'use strict';
     }])
-    .controller('Itara', ['$scope', 'PanchaangaData', '$rootScope', 'ErrorService', function ($scope, PanchaangaData, $rootScope, ErrorService) {
-        'use strict';
-
-        $scope.fromYear = 2016;
-        $scope.toYear = 2025;
-        $scope.sayHello = function () {
-            $rootScope.Indesign.evalScript('placeData(' + $scope.fromYear + ')');
-        };
-        $scope.prepare = function() {
-            $scope.processing = true;
-            PanchaangaData.Ephemeris().get({ fromyear: $scope.fromYear, toyear : $scope.toYear })
-                .$promise.then(function(data) {
-                        $scope.processing = false;
-                        $rootScope.Indesign.evalScript('Ephemeris.prepare(' + JSON.stringify(data) + ')');
-                    }, function(error) {
-                        if(error.status !== 0) {
-                            ErrorService.AddWarning('Calculation services', "Problem in retrieving data from Panchang calculation service.", error);
-                        }
-                    }, function(update) {
-                        alert('Got notification: ' + update);
-                    }
-                );
-        };
-
-        $scope.abort = function() { $scope.processing = false; PanchaangaData.Abort(); };
-    }]).controller('Settings', ['$scope', 'DataService', function ($scope, DataService) {
+    .controller('Settings', ['$scope', 'DataService', function ($scope, DataService) {
         'use strict';
         $scope.ResetDataFromWeb = function(){
             DataService.RestoreFromWeb(false);

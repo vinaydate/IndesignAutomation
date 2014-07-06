@@ -26,8 +26,11 @@
                 </div>
             </div>
             <div class="field">
-                <div class="ui blue button" ng-click="prepare()" ng-class="{loading:processing}">
-                    Prepare
+                <div class="ui blue button dimmable" ng-click="calculate()">
+                    <div class="ui inverted dimmer" ng-class="{active:processing}">
+                        <div class="ui loader"></div>
+                    </div>
+                    {{buttonText}}
                 </div>
             </div>
             <div class="field" ng-hide="!processing">

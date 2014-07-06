@@ -70,6 +70,23 @@
         </div>
     </div>-->
 
+    <div class="ui modal">
+        <!--<i class="close icon"></i>-->
+        <div class="ui inverted red block header">
+            {{modal.Header}}
+        </div>
+        <div class="content">
+            {{modal.Text}}
+        </div>
+        <div class="actions">
+            <div class="ui button" ng-hide="!modal.withCancel">
+                Cancel
+            </div>
+            <div class="ui button">
+                Ok
+            </div>
+        </div>
+    </div>
 
 </div>
 
@@ -93,7 +110,9 @@
 <script src="Features/Service/DataService.js"></script>
 <script src="Features/Service/PanchaangaData.js"></script>
 <script src="./js/controllers.js"></script>
+<script src="Features/Itara/ItaraController.js"></script>
 <script src="./js/forSemanticUI.js"></script>
+<script src="./js/lib/Utils.js"></script>
 </body>
 
 </html>

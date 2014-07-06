@@ -17,7 +17,8 @@ angular.module('App').service('PanchaangaData', ['$resource', 'ErrorService', '$
             {
                 'get': {
                     method: 'GET',
-                    timeout: canceller.promise
+                    timeout: canceller.promise,
+                    cache: true
                 }
             });
     };
