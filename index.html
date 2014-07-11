@@ -15,9 +15,9 @@
     <title>Panchaanga</title>
 </head>
 
-<body onLoad="onLoaded()">
+<body ng-controller="MainController" onLoad="onLoaded()">
 
-<div ng-controller="MainController" class="ui grid">
+<div class="ui grid">
     <div class="ui menu">
         <div class="ui teal simple dropdown button">
             <div class="text marathi">{{ selectedSection.title }}</div>
@@ -73,10 +73,10 @@
     <div class="ui modal">
         <!--<i class="close icon"></i>-->
         <div class="ui inverted red block header">
-            {{modal.Header}}
+            {{ warning.Header }}
         </div>
         <div class="content">
-            {{modal.Text}}
+            {{ warning.Text }}
         </div>
         <div class="actions">
             <div class="ui button" ng-hide="!modal.withCancel">

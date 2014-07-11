@@ -2202,7 +2202,7 @@
     // Overload:function(replacer, space)
     Enumerable.prototype.toJSONString = function (replacer, space) {
         if (typeof JSON === Types.Undefined || JSON.stringify == null) {
-            throw new Error("toJSONString can't find JSON.stringify. This works native JSON support Browser or include json2.js");
+            throw new Error("toJSONString can't find JSON.stringify. This works native JSON support Browser or include json2.jsx");
         }
         return JSON.stringify(this.toArray(), replacer, space);
     };

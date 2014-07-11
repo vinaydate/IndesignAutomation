@@ -39,8 +39,25 @@ PanchaangaIndApp.controller('Itara', ['$scope', 'PanchaangaData', '$rootScope', 
                 }
             );
         }
-        else{
-            $rootScope.Indesign.evalScript('Ephemeris.prepare(' + angular.toJson($scope.data) + ')');
+        else {
+            $rootScope.Indesign.evalScript('Ephemeris.prepare(' + angular.toJson($scope.data) + ')', function (message) {
+                if (message === EvalScript_ErrMessage){
+                    $rootScope.$broadcast($rootScope.AlertModal,
+                        {
+                            Header: "Error",
+                            Text: message
+                        }
+                    );
+                }
+                else if(IsError(message)) {
+                    $rootScope.$broadcast($rootScope.AlertModal,
+                        {
+                            Header: "Error",
+                            Text: angular.fromJson(message).message
+                        }
+                    );
+                }
+            });
             $scope.processed = false;
             $scope.buttonText = "Calculate";
         }

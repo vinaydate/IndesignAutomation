@@ -10,3 +10,11 @@ function CopyObject(target, source){
     }
 }
 
+/**
+ * @return {boolean}
+ */
+function IsError(message){
+    var obj = angular.fromJson(message);
+
+    return (typeof obj !== 'undefined' && obj.hasOwnProperty('type') && obj.type === 'Error');
+}

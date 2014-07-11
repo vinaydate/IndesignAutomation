@@ -5,14 +5,15 @@
 PanchaangaIndApp
     .controller('MainController', ['$scope', 'DataService', 'ErrorService', '$timeout', '$rootScope', function ($scope, DataService, ErrorService, $timeout, $rootScope) {
         'use strict';
-        $scope.modal = {
+        $scope.warning = {
             Header : "",
             Text : "",
             withCancel : false
         };
 
         $scope.$on($rootScope.AlertModal, function(event, settings){
-            CopyObject($scope.modal,settings);
+            CopyObject($scope.warning,settings);
+            $scope.$apply();
             $('.ui.modal')
                 .modal('show')
             ;

@@ -562,7 +562,7 @@ jQuery.extend({
 
 			if ( data ) {
 				// Make sure the incoming data is actual JSON
-				// Logic borrowed from http://json.org/json2.js
+				// Logic borrowed from http://json.org/json2.jsx
 				if ( rvalidchars.test( data.replace( rvalidescape, "@" )
 					.replace( rvalidtokens, "]" )
 					.replace( rvalidbraces, "")) ) {
