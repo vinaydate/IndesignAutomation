@@ -263,7 +263,7 @@ Utils = {
     FitRows: function (table, expectedBodyRows, keepLastRow) {
         var actualRowCnt = table.bodyRowCount;
         var normalRowsHeight = table.rows[table.headerRowCount + 1].height * actualRowCnt;
-        if (!keepLastRow) {
+        if (keepLastRow == null || !keepLastRow) {
             if (table.bodyRowCount > expectedBodyRows)
                 while (table.bodyRowCount > expectedBodyRows)
                     table.rows[table.headerRowCount + table.bodyRowCount - 1].remove();
@@ -277,9 +277,9 @@ Utils = {
                     table.rows[table.bodyRowCount - 1].remove();
             if (expectedBodyRows > actualRowCnt)
                 for (var toAddCnt = actualRowCnt + 1; toAddCnt <= expectedBodyRows; toAddCnt++)
-                    table.rows.add(LocationOptions.BEFORE, table.rows[table.rows.Count]);
+                    table.rows.add(LocationOptions.BEFORE, table.rows[table.rows.length - 1]);
         }
-        for (var i = 1; i <= expectedBodyRows; i++) {
+        for (var i = 0; i < expectedBodyRows; i++) {
             var row = table.rows[i + table.headerRowCount];
             row.autoGrow = false;
             row.height = normalRowsHeight / expectedBodyRows;

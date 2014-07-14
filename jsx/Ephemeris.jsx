@@ -75,6 +75,7 @@ Ephemeris = {
         if (res.Error()) {
             return res;
         }
+        Utils.FitRows(table, avadhi.Dinas.length);
 
         for (var dinaCnt = 0; dinaCnt < avadhi.Dinas.length; dinaCnt++) {
             var dina = avadhi.Dinas[dinaCnt];
